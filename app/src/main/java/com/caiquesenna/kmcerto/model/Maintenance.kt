@@ -26,11 +26,11 @@ data class Maintenance(
     val workshop: String, //Nome da oficina
     val city: String,
     val phone: String? = null,
-    val laborCost: Double = 0,0,
-    val partsCost: Double = 0,0,
-    val totalCost: Double = 0,0,
+    val laborCost: Double = 0.0,
+    val partsCost: Double = 0.0,
+    val totalCost: Double = 0.0,
     val warrantyDays: Int = 0,
-    val warrantyMileage: Double = 0,0,
+    val warrantyMileage: Double = 0.0,
     val invoicePhotoPath: String? = null,
     val notes: String? = null,
     val createdAt: Long = System.currentTimeMillis()

@@ -41,10 +41,6 @@ class OilChangeViewModel (application: Application) : AndroidViewModel(applicati
         return repository.getKmToNextOilChange(vehicleId)
     }
 
-    fun getAverageKmPerLiter(vehicleId: Int): LiveData<Double?> {
-        return repository.getAverageKmPerLiter(vehicleId)
-    }
-
     fun getCostPerKm(oilChange: OilChange): Double {
         return if (oilChange.totalCost == 0.0) {
             0.0

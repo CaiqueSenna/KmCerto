@@ -29,7 +29,6 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun fuelingDao () : FuelingDao
     abstract fun oilChangeDao () : OilChangeDao
     abstract fun maintenanceDao () : MaintenanceDao
-}
 
     companion object {
         @Volatile

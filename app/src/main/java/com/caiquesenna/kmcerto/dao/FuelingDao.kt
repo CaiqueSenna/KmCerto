@@ -26,10 +26,10 @@ interface FuelingDao {
     @Query("SELECT * FROM fuelings ORDER BY date DESC LIMIT 1")
     fun getLastFueling() : LiveData<Fueling?>
 
-    @Query("SELECT SUM(totalCost) FROM fuelings Where date BETWEEN : startDate AND :endDate")
+    @Query("SELECT SUM(totalCost) FROM fuelings WHERE date BETWEEN :startDate AND :endDate")
     fun getTotalCostBetween(startDate: Long, endDate: Long) : LiveData<Double?>
 
-    @Query("SELECT COUNT (*) FROM fuelings")
+    @Query("SELECT COUNT(*) FROM fuelings")
     fun getFuelingCount(): LiveData<Int>
 
     @Query("SELECT AVG(kmPerLiter) FROM fuelings WHERE vehicleId = :vehicleId AND kmPerLiter > 0")

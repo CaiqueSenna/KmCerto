@@ -21,6 +21,7 @@ class OilChangeRepository (private val oilChangeDao: OilChangeDao) {
         return oilChangeDao.getNextOilChange()
     }
 
-    fun getKmToNextOilChange(vehicleId: Int): LiveData<Double?> {}
-    fun getAverageKmPerLiter(vehicleId: Int): androidx.lifecycle.LiveData<Double?> {}
+    fun getKmToNextOilChange(vehicleId: Int): LiveData<Double?> {
+        return oilChangeDao.getKmToNextOilChange(vehicleId)
+    }
 }

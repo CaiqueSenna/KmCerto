@@ -28,8 +28,8 @@ data class Fueling(
     val pricePerLiter: Double, // Preço do litro
     val liters: Double, // Quantidade abastecida
     val totalCost: Double, //Calculado: liters * pricePerLiter
-    val kmPerLiter: Double = 0,0, //Consumo: KM percorridos / litros
-    val costPerKm: Double = 0,0, //Custo por KM> totalCost / KM percorridos
+    val kmPerLiter: Double = 0.0, //Consumo: KM percorridos / litros
+    val costPerKm: Double = 0.0, //Custo por KM: totalCost / KM percorridos
     val notes: String? = null,
     val createdAt: Long = System.currentTimeMillis()
 )

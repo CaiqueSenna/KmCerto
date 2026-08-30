@@ -26,7 +26,7 @@ interface MaintenanceDao {
     @Query("SELECT * FROM maintenances ORDER BY date DESC LIMIT 1")
     fun getLastMaintenance(): LiveData<Maintenance?>
 
-    @Query("SELECT COUNT (*) FROM maintenances")
+    @Query("SELECT COUNT(*) FROM maintenances")
     fun getMaintenanceCount(): LiveData<Int>
 
 

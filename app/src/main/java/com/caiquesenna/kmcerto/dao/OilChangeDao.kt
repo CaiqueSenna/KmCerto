@@ -26,7 +26,8 @@ interface OilChangeDao {
     @Query("SELECT * FROM oil_changes ORDER BY nextChangeDate ASC LIMIT 1")
     fun getNextOilChange(): LiveData<OilChange?>
 
-    @Query("SELECT COUNT (*) FROM oil_changes")
+    @Query("SELECT COUNT(*) FROM oil_changes")
     fun getOilChangeCount(): LiveData<Int>
-
+    @Query("SELECT (nextChangeMileage - (SELECT currentMileage FROM vehicles WHERE id = :vehicleId)) FROM oil_changes WHERE vehicleId = :vehicleId ORDER BY date DESC LIMIT 1")
+    fun getKmToNextOilChange(vehicleId: Int): LiveData<Double?>
 }
