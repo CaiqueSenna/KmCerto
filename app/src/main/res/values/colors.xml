@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="md_theme_primary">#1565C0</color>
+    <color name="md_theme_on_primary">#FFFFFF</color>
+    <color name="md_theme_secondary">#3DDC84</color>"
+    <color name="md_theme_tertiary">#FF6F00</color>
+    <color name="md_theme_surface">#F8F9FA</color>
+    <color name="md_theme_background">#FFFFFF</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="divider">#E0E0E0</color>
 </resources>
