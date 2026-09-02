@@ -1,22 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/md_theme_surface">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:elevation="4dp">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="Controle de Veiculos"
-            app:titleTextAppearance="?attr/textAppearanceTitleLarge"
-            style="@style/Widget.Material3.Toolbar.OnSurface"/>
+            android:background="@color/md_theme_primary"
+            app:title="Controle de Veículos"
+            app:titleTextColor="@color/md_theme_on_primary"
+            app:navigationIcon="@drawable/ic_car"
+            app:navigationIconTint="@color/md_theme_on_primary"
+            app:titleTextAppearance="?attr/textAppearanceTitleLarge">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_notifications"
+                app:tint="@color/md_theme_on_primary"
+                android:contentDescription="Notificações" />
+
+        </com.google.android.material.appbar.MaterialToolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -34,56 +51,173 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Resumo"
-                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:text="RESUMO"
+                android:textStyle="bold"
+                android:textColor="@color/text_secondary"
+                android:textAppearance="?attr/textAppearanceLabelLarge"
                 android:layout_marginBottom="8dp" />
 
-        <androidx.constraintlayout.helper.widget.Grid
-            android:id="@+id/gridStats"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:columnCount="2"
-            app:rowCount="3"
-            app:useDefaultMargins="true">
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:alignmentMode="alignMargins"
+                android:columnOrderPreserved="false">
 
-            <include layout="@layout/item_stat_card"
-                android:id"@+id/cardVehicles"/>
+                <include
+                    layout="@layout/item_stat_card"
+                    android:id="@+id/cardVehicles"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1" />
 
-            <include layout="@layout/item_stat_card"
-                android:id"@+id/cardFuelings"/>
+                <include
+                    layout="@layout/item_stat_card"
+                    android:id="@+id/cardFuelings"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1" />
 
-            <include layout="@layout/item_stat_card"
-                android:id="@+id/cardOilChanges"/>
+                <include
+                    layout="@layout/item_stat_card"
+                    android:id="@+id/cardOilChanges"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1" />
 
-            <include layout="@layout/item_stat_card"
-                android:id="@+id/cardOilChanges"/>
+                <include
+                    layout="@layout/item_stat_card"
+                    android:id="@+id/cardMaintenance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1" />
 
-            <include layout="@layout/item_stat_card"
-                android:id="@+id/cardMaintenance"/>
+                <include
+                    layout="@layout/item_stat_card"
+                    android:id="@+id/cardMonthCost"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1" />
 
-            <include layout="@layout/item_stat_card"
-                android:id="@+id/cardMonthCost"/>
+                <include
+                    layout="@layout/item_stat_card"
+                    android:id="@+id/cardYearCost"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1" />
 
-            <include layout="@layout/item_stat_card"
-                android:id="@+id/cardYearCost"/>
+            </GridLayout>
 
-        </androidx.constraintlayout.helper.widget.Grid>
+            <!-- Alerta de Manutenção -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#FFF8E1"
+                app:strokeWidth="1dp"
+                app:strokeColor="#FFE082">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Menu"
-            android:textAppearance="?attr/textAppearanceTitleMedium"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="8dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical">
 
-            <! -- Botoes do menu em grid 2x4 -->
-            <! -- btnVehicles, btnFuelings, btnOilChanges, btnMaintenance -->
-            <! -- btnReports, btnSettings, btnBackup -->
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_alert"
+                        app:tint="#F57C00"
+                        android:contentDescription="Alerta"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Troca de óleo próxima"
+                            android:textStyle="bold"
+                            android:textColor="#F57C00"
+                            android:textAppearance="?attr/textAppearanceBodyLarge"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Honda Civic — faltam 320 km"
+                            android:textColor="#5D4037"
+                            android:textAppearance="?attr/textAppearanceBodyMedium"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MENU"
+                android:textStyle="bold"
+                android:textColor="@color/text_secondary"
+                android:textAppearance="?attr/textAppearanceLabelLarge"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp"/>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="3"
+                android:alignmentMode="alignMargins"
+                android:columnOrderPreserved="false">
+
+                <include layout="@layout/item_menu_button"
+                    android:id="@+id/btnVehicles"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"/>
+
+                <include layout="@layout/item_menu_button"
+                    android:id="@+id/btnFuelings"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"/>
+
+                <include layout="@layout/item_menu_button"
+                    android:id="@+id/btnOilChanges"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"/>
+
+                <include layout="@layout/item_menu_button"
+                    android:id="@+id/btnMaintenance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"/>
+
+                <include layout="@layout/item_menu_button"
+                    android:id="@+id/btnReports"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"/>
+
+                <include layout="@layout/item_menu_button"
+                    android:id="@+id/btnSettings"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"/>
+
+            </GridLayout>
 
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
